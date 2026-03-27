@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <title>Brikers Parašo Generatorius</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 30px; background: #f0f2f5; color: #333; }
+        .container { display: flex; gap: 40px; max-width: 1100px; margin: 0 auto; }
+        .form-box { background: white; padding: 25px; border-radius: 12px; flex: 1; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .preview-box { background: white; padding: 25px; border-radius: 12px; flex: 1.5; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: sticky; top: 30px; height: fit-content; }
+        h2 { margin-top: 0; color: #0073e6; font-size: 22px; }
+        label { font-weight: bold; font-size: 14px; display: block; margin-bottom: 5px; }
+        input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
+        input:focus { border-color: #0073e6; outline: none; box-shadow: 0 0 5px rgba(0,115,230,0.2); }
+        .instruction { background: #e7f3ff; padding: 10px; border-left: 4px solid #0073e6; font-size: 13px; margin-bottom: 20px; }
+        .copy-hint { color: #666; font-size: 12px; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="form-box">
+        <h2>Duomenys</h2>
+        <div class="instruction">Užpildykite laukelius, o tada dešinėje esantį parašą tiesiog pažymėkite pele ir nukopijuokite į Gmail.</div>
+        
+        <label>Vardas Pavardė:</label>
+        <input type="text" id="inName" placeholder="Saulius Orbakas" oninput="update()">
+        
+        <label>Pareigos:</label>
+        <input type="text" id="inTitle" placeholder="Marketingo vadybininkas" oninput="update()">
+        
+        <label>Mobilus tel.:</label>
+        <input type="text" id="inPhone" placeholder="+370 669 47309" oninput="update()">
+        
+        <label>El. paštas:</label>
+        <input type="text" id="inEmail" placeholder="saulius@brikers.lt" oninput="update()">
+    </div>
+
+    <div class="preview-box">
+        <span style="font-weight: bold; color: #666; font-size: 12px; text-transform: uppercase;">Parašo peržiūra:</span>
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+        
+        <div id="signature-area">
+            <table cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif; font-size: 13px; color:#333; line-height: 1.4; background: white;">
+                <tr>
+                    <td>
+                        <strong id="outName" style="font-size:15px; color:#111;">Saulius Orbakas</strong><br>
+                        <span id="outTitle" style="font-size:12px; color:#555;">Marketingo vadybininkas</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 0;">
+                        <img src="https://i.ibb.co/Qv4DLGk1/1-2-new.png" width="400" style="display:block; border:0;" alt="Brikers">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-bottom:10px;">
+                        <img src="https://i.ibb.co/8gc8ndcj/Stip-1414-nw.png" width="40" style="display:inline-block; border:0; margin-right:5px;" alt="Stipriausi">
+                        <img src="https://i.ibb.co/ZpcZtM0M/iso-big.png" width="40" style="display:inline-block; border:0;" alt="ISO">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-top:5px;">
+                        <strong>UAB Brikers LT</strong> | R. Kalantos g. 85, Kaunas<br>
+                        Mob.: <span id="outPhone">+370 669 47309</span><br>
+                        <a href="https://brikers.lt" style="color:#0073e6; text-decoration:none; font-weight: bold;">www.brikers.lt</a> | 
+                        <a id="outEmailLink" href="mailto:saulius@brikers.lt" style="color:#0073e6; text-decoration:none;"><span id="outEmail">saulius@brikers.lt</span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-top:12px;">
+                        <a href="https://www.linkedin.com/company/brikerslietuva/" target="_blank"><img src="https://i.ibb.co/xyHMTsM/icons8-linkedin-48.png" width="22" style="border:0; margin-right:8px;" alt="LinkedIn"></a>
+                        <a href="https://www.instagram.com/brikers.lt/" target="_blank"><img src="https://i.ibb.co/27Pjsny8/icons8-instagram-48.png" width="22" style="border:0; margin-right:8px;" alt="Instagram"></a>
+                        <a href="https://www.facebook.com/brikerslietuva" target="_blank"><img src="https://i.ibb.co/TDfdLSzJ/icons8-facebook-48.png" width="22" style="border:0;" alt="Facebook"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-top:15px; font-size:8.5px; color:#999; line-height:1.3; text-align: justify; border-top: 1px solid #eee; margin-top: 10px;">
+                        Šis pranešimas skirtas tik tam asmeniui, kuriam jis laiškas adresuotas bei kitiems asmenims, įgaliotiems jį gauti. Laiške gali būti konfidencialios ar kitaip teisiškai saugomos informacijos. Perspėjame, kad jei nesate numatytas šio laiško gavėjas, bet koks šio laiško turinio atskleidimas, kopijavimas, platinimas ar naudojimas yra griežtai draudžiamas.
+                    </td>
+                </tr>
+            </table>
+            </div>
+        
+        <p class="copy-hint">💡 <strong>Patarimas:</strong> Pele pažymėkite visą parašą (nuo vardo iki pilko teksto pabaigos) ir paspauskite Ctrl+C.</p>
+    </div>
+</div>
+
+<script>
+    function update() {
+        const name = document.getElementById('inName').value || 'Saulius Orbakas';
+        const title = document.getElementById('inTitle').value || 'Marketingo vadybininkas';
+        const phone = document.getElementById('inPhone').value || '+370 669 47309';
+        const email = document.getElementById('inEmail').value || 'saulius@brikers.lt';
+
+        document.getElementById('outName').innerText = name;
+        document.getElementById('outTitle').innerText = title;
+        document.getElementById('outPhone').innerText = phone;
+        document.getElementById('outEmail').innerText = email;
+        document.getElementById('outEmailLink').href = 'mailto:' + email;
+    }
+</script>
+
+</body>
+</html>
